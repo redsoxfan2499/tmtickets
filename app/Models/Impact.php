@@ -17,4 +17,9 @@ class Impact extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
 }

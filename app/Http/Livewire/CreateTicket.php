@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
+use App\Models\Priority;
 use Livewire\Component;
 use Carbon\Carbon;
 use App\Models\Ticket;
@@ -33,6 +35,12 @@ class CreateTicket extends Component
 
     public function render()
     {
+//        return view('livewire.create-ticket',[
+//            'categories'    => Category::all(),
+//            'priorities'    => Priority::all(),
+//            'impacts'       => Impact::all()
+//        ]);
+
         return view('livewire.create-ticket');
     }
 

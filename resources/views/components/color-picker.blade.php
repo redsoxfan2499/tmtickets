@@ -10,8 +10,9 @@
     wire:ignore
     {{ $attributes }}
 >
-    Current Color is:
-    <span x-text="color" class="mx-2 p-3 rounded" :style="`background: ${color}`"></span>
+
+{{--    <span x-text="color" class="mx-2 p-3 rounded" :style="`background: ${color}`"></span>--}}
+
     <button
         x-ref="button"
         class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

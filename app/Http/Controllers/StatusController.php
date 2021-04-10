@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Status;
 
 class StatusController extends Controller
 {
@@ -16,8 +17,8 @@ class StatusController extends Controller
         return view('statuses.create');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('statuses.edit');
+        return view('statuses.edit', compact('id'));
     }
 }

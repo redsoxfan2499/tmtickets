@@ -18,4 +18,5 @@ class Category extends Model
         'name',
         'color',
     ];
+
 }

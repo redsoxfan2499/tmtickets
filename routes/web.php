@@ -26,5 +26,7 @@ require __DIR__.'/auth.php';
 
 Route::resource('impacts', ImpactController::class);
 Route::resource('statuses', StatusController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('priorities', PriorityController::class);
 
 Route::resource('tickets', TicketController::class);
