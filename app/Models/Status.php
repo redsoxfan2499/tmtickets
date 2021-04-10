@@ -18,4 +18,9 @@ class Status extends Model
         'name',
         'color',
     ];
+
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
 }
