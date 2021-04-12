@@ -15,4 +15,8 @@ class ImpactController extends Controller
     {
         return view('impacts.create');
     }
+     public function edit($id)
+    {
+        return view('impacts.edit', compact('id'));
+    }
 }

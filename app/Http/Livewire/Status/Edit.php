@@ -11,6 +11,7 @@ class Edit extends Component
     public $name;
     public $color;
     public $status;
+    public $status_id;
 
     protected $rules = [
         'name' => 'required',
@@ -22,6 +23,7 @@ class Edit extends Component
         $status = Status::find($id);
         $this->name = $status->name;
         $this->color = $status->color;
+        $this->status_id = $id;
     }
 
     public function render()
@@ -29,17 +31,13 @@ class Edit extends Component
         return view('livewire.status.edit');
     }
 
-    public function update(Status $status)
+    public function updateStatus()
     {
         $this->validate();
-        $status = Status::findOrFail($status->id);
-        $status = Status::update([
-            'name'  => $this->name,
-            'color' => $this->color,
+        $status = Status::find($this->status_id);
+        $status->update([
+            'name' => $this->name,
+            'color' => $this->color
         ]);
-        $status->save();
-
-        return redirect()->route('statuses.index');
     }
-
 }

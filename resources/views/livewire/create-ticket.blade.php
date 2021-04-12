@@ -1,4 +1,5 @@
 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" wire:submit.prevent="save">
+    <input type="hidden" id="status" name="status" value="" />
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
             Title
@@ -18,9 +19,9 @@
                 name="category"
                 id="category">
             <option value="">Choose a Category</option>
-            <option value="update_content">Update Content</option>
-            <option value="update_link">Update Link</option>
-            <option value="landing_page">Create Landing Page</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
         </select>
         @error('category') <span class="error">{{ $message }}</span> @enderror
     </div>
@@ -33,10 +34,9 @@
                 name="priority"
                 id="priority">
             <option value="">Choose a Priority</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-            <option value="other">Other</option>
+            @foreach($priorities as $priority)
+                <option value="{{ $priority->id }}">{{ $priority->name }}</option>
+            @endforeach
         </select>
         @error('priority') <span class="error">{{ $message }}</span> @enderror
     </div>
@@ -50,10 +50,9 @@
                 name="impact"
                 id="impact">
             <option value="">Choose a Impact Level</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-            <option value="other">Other</option>
+            @foreach($impacts as $impact)
+                <option value="{{ $impact->id }}">{{ $impact->name }}</option>
+            @endforeach
         </select>
         @error('impact') <span class="error">{{ $message }}</span> @enderror
     </div>

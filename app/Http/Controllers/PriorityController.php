@@ -16,8 +16,8 @@ class PriorityController extends Controller
         return view('priorities.create');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('priorities.edit');
+        return view('priorities.edit', compact('id'));
     }
 }

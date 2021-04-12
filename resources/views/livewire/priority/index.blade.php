@@ -19,7 +19,7 @@
                         <span class="mx-2 p-3 rounded" style="background: {{ $priority->color }}">{{ $priority->color }}</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ url('statuses/'.$priority->id.'/edit ') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="{{ url('priorities/'.$priority->id.'/edit ') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             Edit Priority
                         </a>
                     </td>

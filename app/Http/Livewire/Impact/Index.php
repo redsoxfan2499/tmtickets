@@ -9,6 +9,7 @@ use DB;
 class Index extends Component
 {
     public Impact $impact;
+    
     public function render()
     {
         return view('livewire.impact.index',[
