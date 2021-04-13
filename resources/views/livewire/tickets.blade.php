@@ -18,7 +18,7 @@
                     {{ $ticket->title }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    {{ $ticket->status }}
+                    {{ $ticket->status->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     @php

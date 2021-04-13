@@ -15,7 +15,7 @@ class Tickets extends Component
     public function render()
     {
         return view('livewire.tickets',[
-            'tickets'   => DB::table('tickets')->where('submitter', '=', Auth()->user()->id)->get()
+            'tickets'   => DB::table('tickets')->where('author_id', '=', Auth()->user()->id)->get()
         ]);
     }
 }

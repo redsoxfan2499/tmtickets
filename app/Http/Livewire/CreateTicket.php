@@ -15,22 +15,20 @@ class CreateTicket extends Component
 {
     use WithFileUploads;
     public $title;
-    public $category;
-    public $priority;
-    public $impact;
-    public $comment;
+    public $status_id;
+    public $category_id;
+    public $priority_id;
+    public $impact_id;
+    public $staff_id;
+    public $comment_body;
     public $images = [];
 
-//    public $status;
-//    public $submitter;
-//    public $owner;
-
     protected $rules = [
-        'title' => 'required|min:6',
-        'category' => 'required|string',
-        'priority' => 'required|string',
-        'impact' => 'required|string',
-        'comment' => 'required',
+        'title'         => 'required|min:6',
+        'category_id'   => 'required',
+        'priority_id'   => 'required',
+        'impact_id'     => 'required',
+        'comment_body'  => 'required',
         //'images.*' => 'image|max:1024|nullable', // 1MB Max
     ];
 
@@ -45,20 +43,23 @@ class CreateTicket extends Component
         //return view('livewire.create-ticket');
     }
 
-    public function save()
+    public function createTicket()
     {
         $this->validate();
         $ticket = Ticket::create([
-            'title'     => $this->title,
-            'category'  => $this->category,
-            'priority'  => $this->priority,
-            'impact'    => $this->impact,
-            'status'    => 'requested',
-            'submitter' => Auth()->user()->id,
-            'owner'     => 2,
+            'title'         => $this->title,
+            'status_id'     => 1,
+            'category_id'   => $this->category_id,
+            'priority_id'   => $this->priority_id,
+            'impact_id'     => $this->impact_id,
+            'author_id'     => Auth()->user()->id,
+            'staff_id'      => 1,
         ]);
+        $comment_body = $this->comment_body;
+        
         $ticket->save();
         $ticket_id = $ticket->id;
+        
 
 //        foreach ($this->images as $image)
 //        {
@@ -82,11 +83,13 @@ class CreateTicket extends Component
 //            ]);
 //            $image->save();
 //        }
-        Comment::create([
-            'body'      => $this->comment,
-            'ticket_id' => $ticket_id,
-            'user_id'   => Auth()->user()->id
+        $comment = Comment::create([
+            'comment_body'  => $comment_body,
+            'ticket_id'     => $ticket_id,
+            'author_id'     => Auth()->user()->id,
+            'staff_id'      => 1
         ]);
+        $comment->save();
         return redirect()->route('tickets.index');
     }
 }

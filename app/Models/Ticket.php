@@ -62,7 +62,7 @@ class Ticket extends Model
     /**
      * Get the category support ticket.
      */
-    public function category()
+    public function categories()
     {
         return $this->hasMany(Category::class, 'category_id');
     }
@@ -70,7 +70,7 @@ class Ticket extends Model
     /**
      * Get the priority support ticket.
      */
-    public function priority()
+    public function priorities()
     {
         return $this->hasMany(Priority::class, 'priority_id');
     }
@@ -78,7 +78,7 @@ class Ticket extends Model
     /**
      * Get the impact support ticket.
      */
-    public function impact()
+    public function impacts()
     {
         return $this->hasMany(Impact::class, 'impact_id');
     }
