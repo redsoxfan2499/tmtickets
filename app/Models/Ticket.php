@@ -4,6 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
+use App\Models\Image;
+use App\Models\User;
+use App\Models\Status;
+use App\Models\Category;
+use App\Models\Impact;
+use App\Models\Priority;
 
 class Ticket extends Model
 {
@@ -24,7 +31,7 @@ class Ticket extends Model
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'ticket_id', 'id');
+        return $this->hasMany(Comment::class, 'ticket_id');
     }
 
     /**
@@ -40,7 +47,7 @@ class Ticket extends Model
      */
     public function author()
     {
-        return $this->hasMany(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     /**
@@ -48,7 +55,7 @@ class Ticket extends Model
      */
     public function staff()
     {
-        return $this->hasMany(User::class, 'staff_id');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -56,31 +63,31 @@ class Ticket extends Model
      */
     public function status()
     {
-        return $this->hasMany(Status::class, 'status_id');
+        return $this->belongsTo(Status::class);
     }
 
     /**
      * Get the category support ticket.
      */
-    public function categories()
+    public function category()
     {
-        return $this->hasMany(Category::class, 'category_id');
+        return $this->belongsTo(Category::class);
     }
 
     /**
      * Get the priority support ticket.
      */
-    public function priorities()
+    public function priority()
     {
-        return $this->hasMany(Priority::class, 'priority_id');
+        return $this->belongsTo(Priority::class);
     }
 
     /**
      * Get the impact support ticket.
      */
-    public function impacts()
+    public function impact()
     {
-        return $this->hasMany(Impact::class, 'impact_id');
+        return $this->belongsTo(Impact::class);
     }
 
 

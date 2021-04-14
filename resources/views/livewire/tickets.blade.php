@@ -18,23 +18,19 @@
                     {{ $ticket->title }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    {{ $ticket->status->name }}
+                    {{ optional($ticket->status)->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    @php
-                    $category = $ticket->category;
-                    $category = str_replace('_', ' ', $category);
-                    echo $category;
-                    @endphp
+                    {{ optional($ticket->category)->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    {{ $ticket->priority }}
+                    {{ optional($ticket->priority)->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    {{ $ticket->impact }}
+                    {{ optional($ticket->impact)->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    {{ $ticket->owner }}
+                    {{ optional($ticket->staff)->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <a class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"

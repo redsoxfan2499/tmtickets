@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use DB;
+use App\Models\Ticket;
 
 class Tickets extends Component
 {
@@ -15,7 +16,7 @@ class Tickets extends Component
     public function render()
     {
         return view('livewire.tickets',[
-            'tickets'   => DB::table('tickets')->where('author_id', '=', Auth()->user()->id)->get()
+            'tickets'   => Ticket::where('author_id', '=', Auth()->user()->id)->get()
         ]);
     }
 }

@@ -10,7 +10,7 @@ class TicketController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         return view('tickets.index');
@@ -21,8 +21,8 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('tickets.show');
+        return view('tickets.show', compact('id'));
     }
 }

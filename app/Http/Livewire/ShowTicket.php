@@ -9,8 +9,9 @@ class ShowTicket extends Component
 {
     public $ticket;
 
-    public function mount(Ticket $ticket)
+    public function mount($id)
     {
+        $ticket = Ticket::find($id);
         $this->ticket = $ticket;
     }
 

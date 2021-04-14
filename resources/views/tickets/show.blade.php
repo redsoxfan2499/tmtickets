@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <livewire:show-ticket />
+            <livewire:show-ticket :id="$id" />
         </div>
     </div>
 </x-app-layout>

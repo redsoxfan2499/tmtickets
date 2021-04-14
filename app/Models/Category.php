@@ -19,4 +19,9 @@ class Category extends Model
         'color',
     ];
 
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
 }
