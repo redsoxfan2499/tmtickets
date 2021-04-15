@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Ticket;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -47,4 +48,32 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Ticket::class, 'author_id');
     }
+
+    public function getIsAdminAttribute()
+    {
+        return $this->role_id == 2;
+    }
+
+    public function getIsUserAttribute()
+    {
+        return $this->role_id == 1;
+    }
+
+    public function getIsStaffAttribute()
+    {
+        return $this->role_id == 3;
+    }
+    public function getRoleNameAttribute()
+    {
+        if ( Auth::user()->role_id === 1 ){
+            return 'user';
+        }
+        if ( Auth::user()->role_id === 2 ){
+            return 'admin';
+        }
+        if ( Auth::user()->role_id === 3 ){
+            return 'staff';
+        }
+    }
+
 }

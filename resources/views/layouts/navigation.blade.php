@@ -29,9 +29,12 @@
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
+                        @can('staff-access')
                         <x-nav-link :href="url('tickets')" :active="request()->routeIs('tickets')">
                             {{ __('Tickets') }}
                         </x-nav-link>
+                        @endcan
+                        @can('admin-access')
                         <x-nav-link :href="url('statuses')" :active="request()->routeIs('statuses')">
                             {{ __('Statuses') }}
                         </x-nav-link>
@@ -44,6 +47,7 @@
                         <x-nav-link :href="url('priorities')" :active="request()->routeIs('priorities')">
                             {{ __('Priorities') }}
                         </x-nav-link>
+                        @endcan
                     </div>
                 </div>
 

@@ -32,9 +32,11 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ optional($ticket->staff)->name }}
                     </td>
+                    @can('staff-access')
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="/tickets/{{ $ticket->id }}/edit" class="btn btn-warning bt-sm">View Ticket</a>
+                        <a href="/tickets/{{ $ticket->id }}/edit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Edit Ticket</a>
                     </td>
+                    @endcan
                 </tr>
             </tbody>
         </table>
